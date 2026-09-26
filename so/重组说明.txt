@@ -1,0 +1,23 @@
+重组说明（so/）
+
+大于 8MB 的库已切分为 ≤8MB 分片，命名：<原名>.partNN
+
+被切分：
+  libUnreal.so   -> libUnreal.so.part01 ... part29   （原 237.1 MB）
+  libmxcore.so   -> libmxcore.so.part01 ... part02   （原 11.6 MB）
+
+还原（在 so/ 目录内执行）：
+
+Windows cmd：
+  copy /b libUnreal.so.part01+libUnreal.so.part02+libUnreal.so.part03+libUnreal.so.part04+libUnreal.so.part05+libUnreal.so.part06+libUnreal.so.part07+libUnreal.so.part08+libUnreal.so.part09+libUnreal.so.part10+libUnreal.so.part11+libUnreal.so.part12+libUnreal.so.part13+libUnreal.so.part14+libUnreal.so.part15+libUnreal.so.part16+libUnreal.so.part17+libUnreal.so.part18+libUnreal.so.part19+libUnreal.so.part20+libUnreal.so.part21+libUnreal.so.part22+libUnreal.so.part23+libUnreal.so.part24+libUnreal.so.part25+libUnreal.so.part26+libUnreal.so.part27+libUnreal.so.part28+libUnreal.so.part29 libUnreal.so
+  copy /b libmxcore.so.part01+libmxcore.so.part02 libmxcore.so
+
+Linux / Git Bash：
+  cat libUnreal.so.part* > libUnreal.so
+  cat libmxcore.so.part*  > libmxcore.so
+
+还原后应为：
+  libUnreal.so  237.1 MB
+  libmxcore.so  11.6 MB
+
+其余 .so 均 <8MB，未切分。

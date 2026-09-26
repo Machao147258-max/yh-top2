@@ -1,0 +1,25 @@
+# 某环逆向 — SO 分析环境依赖
+# Python 包（脚本实测 imports）
+pyelftools>=0.29      # ELF / 重定位解析（最常用）
+capstone>=5.0         # 反汇编
+unicorn>=2.0          # Qiling 底层 CPU 模拟
+qiling>=1.4.11        # 纯原生拟真（务必源码安装，pip 版是空壳）
+androguard>=4.1        # DEX / APK 解析
+loguru                # 日志
+pycryptodome          # 加解密（AES/国密）
+lief                  # ELF 解析 / 改写
+numpy                 # 数值
+
+# --- Qiling 额外依赖（源码安装 qiling 时一并） ---
+python-registry
+gevent
+multiprocess
+questionary
+windows-curses
+# 注意: python-fx / pillow 在 Python 3.14 编译失败, 可跳过, 不影响核心
+
+# --- 非 pip 依赖 ---
+# IDAPython  → 随 IDA Pro 9.4 安装（idaapi/idc/idautils/ida_hexrays/...）
+# unidbg     → JDK + Maven（.java 探针 见 unidbg/）
+# Frida      → frida-tools（CLI）+ Node.js（node --check 校验 .js）
+# Qiling rootfs → git clone qilingframework/rootfs，用 arm64_android
